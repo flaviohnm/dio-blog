@@ -12,7 +12,9 @@ dependencies = [
     "flask-migrate",
     "flask-jwt-extended",
     "pytest",
-    "pytest-mock"
+    "pytest-mock",
+    "psycopg2-binary",
+    "gunicorn"
 ]
 
 [tool.pytest.ini_options]

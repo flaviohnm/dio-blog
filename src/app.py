@@ -63,7 +63,7 @@ def create_app(test_config=None):
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_mapping(
         SECRET_KEY="dev",
-        SQLALCHEMY_DATABASE_URI="sqlite:///blog.sqlite",
+        SQLALCHEMY_DATABASE_URI=os.environ["DATABASE_URL"],
         JWT_SECRET_KEY="minha-senha-secreta-do-dio-bank-precisa-ter-mais-de-32-caracteres",
     )
 
