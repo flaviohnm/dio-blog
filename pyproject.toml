@@ -3,7 +3,7 @@ name = "dio-blog"
 version = "0.1.0"
 description = ""
 authors = [{ name = "Flavio Monteiro", email = "flaviohnm@gmail.com" }]
-package-mode = false
+# package-mode = false
 requires-python = ">=3.11"
 dependencies = [
     "flask",
@@ -11,10 +11,12 @@ dependencies = [
     "click (>=8.3.1,<9.0.0)",
     "flask-migrate",
     "flask-jwt-extended",
-    "pytest",
-    "pytest-mock",
     "psycopg2-binary",
-    "gunicorn"
+    "gunicorn",
+    "flask-bcrypt",
+    "flask-marshmallow",
+    "marshmallow-sqlalchemy (>=1.4.2,<2.0.0)",
+    "apispec-webframeworks",
 ]
 
 [tool.pytest.ini_options]
@@ -26,11 +28,11 @@ requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
 [dependency-groups]
-dev = ["pylint (>=4.0.5,<5.0.0)"]
+dev = ["pylint (>=4.0.5,<5.0.0)", "pytest", "pytest-mock"]
 
 [tool.pylint.messages_control]
 disable = [
     "missing-module-docstring",
     "missing-class-docstring",
-    "missing-function-docstring"
+    "missing-function-docstring",
 ]

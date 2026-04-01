@@ -1,17 +1,12 @@
 import pytest
 
-from src.app import Role, User, create_app, db
+from src.app import create_app
+from src.models import Role, User, db
 
 
 @pytest.fixture
 def app():
-    app = create_app(
-        {
-            "SECRET_KEY": "test",
-            "SQLALCHEMY_DATABASE_URI": "sqlite://",
-            "JWT_SECRET_KEY": "test",
-        }
-    )
+    app = create_app(environment="testing")
     with app.app_context():
         db.create_all()
         yield app
@@ -22,7 +17,8 @@ def app():
 def client(app):
     return app.test_client()
 
-@pytest.fixture 
+
+@pytest.fixture
 def access_token(client):
     role = Role(name="admin")
     db.session.add(role)
